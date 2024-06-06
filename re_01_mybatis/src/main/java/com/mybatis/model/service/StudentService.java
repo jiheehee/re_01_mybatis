@@ -1,10 +1,13 @@
 package com.mybatis.model.service;
 
-import org.apache.ibatis.session.SqlSession;
-
 import static com.mybatis.common.SessionTemplate.getSession;
 
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
 import com.mybatis.model.dao.StudentDao;
+import com.mybatis.model.dto.Student;
 
 public class StudentService {
 	
@@ -25,5 +28,16 @@ public class StudentService {
 		session.close();
 		return result;		
 	}
+	
+	public int insertStudentAll(Student s) {		
+		SqlSession session=getSession();
+		int result=dao.insertStudentAll(session,s);
+		if(result>0) session.commit();
+		session.close();
+		return result;				
+	}
+	
+	
+	
 	
 }

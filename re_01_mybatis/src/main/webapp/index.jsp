@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mybatis 기본활용</title>
+<title>mybatis 기본활용 복습</title>
 </head>
 <body>
 	<h2>mybatis</h2>
@@ -17,10 +17,17 @@
 		<a href="${path }/insertstudent.do">학생등록</a>
 	</h3>
 	<form action="${path }/insertstudentbyname.do" method="post">
-		<input type="text" name="name">
+		<h5>[ insertStudentByname ]</h5>
+		<input type="text" name="name" placeholder="이름">
 		<input type="submit" name="저장">
 	</form>
-	
+	<form action="${path }/insertstudentall.do" method="post">
+		<h5>[ insertStudentAll ]</h5>
+		<input type="text" name="name" placeholder="이름">
+		<input type="text" name="phone" placeholder="전화번호">
+		<input type="text" name="email" placeholder="이메일">
+		<input type="submit" value="저장">
+	</form> 
 
 
 

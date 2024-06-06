@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mybatis.model.dto.Student;
 import com.mybatis.model.service.StudentService;
 
 /**
- * Servlet implementation class InsertStudentServlet
+ * Servlet implementation class InsertStudentAllServlet
  */
-@WebServlet("/insertstudent.do")
-public class InsertStudentServlet extends HttpServlet {
+@WebServlet("/insertstudentall.do")
+public class InsertStudentAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertStudentServlet() {
+    public InsertStudentAllServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +30,19 @@ public class InsertStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		request.setCharacterEncoding("utf-8");
-
-		//먼저 파라미터 값을 받아와야 함
-		String name=request.getParameter("name");
 		
-		int result=new StudentService().insertStudent();
-		response.getWriter().write(result>0?"success":"fail");
+		request.setCharacterEncoding("utf-8");
+				
+		//넣을 값 써주기
+		Student s=Student.builder()
+				.studentName(request.getParameter("name"))
+				.studentTel(request.getParameter("phone"))
+				.studentEmail(request.getParameter("email"))
+				.build();
+		
+		int result=new StudentService().insertStudentAll(s);
+		response.getWriter().write(result>0?"sucess":"fail");
+		
 		
 	}
 

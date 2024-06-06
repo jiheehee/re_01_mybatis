@@ -2,21 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- namespace는 mapper의 이름이다 -->
 <mapper namespace="student"> 
+
+	<!-- #{ }  여기안에 들어오는건 
+	1. 매개변수가 하나일 경우 -> 아무거나
+	2. 매개변수 타입이 객체일 경우 -> dto의 필드명
+	3. 매개변수 타입이 map일 경우 -> index의 name값 
+	-->
   
-  <insert id="insertStudent">
-  	INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,'유병승',
-  		'01012341234','YOUU@YOUU.COM','경기도 시흥시',DEFAULT)
-  </insert>
-  
-  <!-- 파라미터가 있는 insert문 작성하기 -> parameterType속성을 이용해서 전달된 값을 설정  -->
-  <!-- 파라미터값을 가져올때는 #{key값} -->
-  <insert id="insertStudentByName" parameterType="string" > <!-- parameterType에는 매개변수의 자료형이 들어오는거임 -->
-  	  	INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{name},
-  		'01012341234','DOUU@EOUU.COM','서울시 강남구',DEFAULT)
-  	<!-- INSERT INTO STUDENT_NAME VALUES #{name} -->
-  	<!-- INSERT INTO 테이블명 VALUE(데이터) -->
-  </insert>
+	<insert id="insertStudent">
+		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,'유병승',
+			'01012341234','YOUU@YOUU.COM','경기도 시흥시',DEFAULT)
+	</insert>
 	
+	<!-- 파라미터가 있는 insert문 작성하기 -> parameterType속성을 이용해서 전달된 값을 설정  -->
+	<!-- 파라미터값을 가져올때는 #{key값} -->
+	<insert id="insertStudentByName" parameterType="string" > <!-- parameterType에는 매개변수의 자료형이 들어오는거임 -->
+		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{studentName},
+			'01012341234','DOUU@EOUU.COM','서울시 강남구',DEFAULT)
+		<!-- INSERT INTO STUDENT_NAME VALUES #{name} -->
+		<!-- INSERT INTO 테이블명 VALUE(데이터) -->
+	</insert>
+	
+	<insert id="student.insertStudentAll" parameterType="string">
+		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{studentName},
+			#{studentPhone},#{studentEmail},'서울시 송파구',DEFAULT)
+	</insert>
 
 
 </mapper>
