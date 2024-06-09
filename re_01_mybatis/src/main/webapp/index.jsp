@@ -28,8 +28,17 @@
 		<input type="text" name="email" placeholder="이메일">
 		<input type="submit" value="저장">
 	</form> 
+	<br>
 
-
+	<h3>1. 전체 학생수 조회</h3>
+	<h4>
+		<a href="${path }/student/studentCount.do">1)전체 학생수</a>
+	</h4>
+	<br>
+	<h3>2)학생조회하기</h3>
+	<a href="${path }/student/studentbyno?no=1">2-1)1번학생 조회</a>
+		
+	
 
 
 

@@ -27,6 +27,10 @@ public class StudentDao {
 		return result;
 		
 	}
+	
+	public Student selectStudentByNo(SqlSession session, int no) {
+		return session.selectOne("student.selectStudentByNo",no);	
+	}
 
 	
 	

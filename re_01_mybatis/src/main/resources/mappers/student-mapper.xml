@@ -27,6 +27,19 @@
 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{studentName},
 			#{studentPhone},#{studentEmail},'서울시 송파구',DEFAULT)
 	</insert>
+	
+	<resultMap id="studentMap" type="com.mybatis.model.dto.Student">
+		<id column="student_no" property="studentNo"/>	
+		<result column="student_name" property="studentName"/>
+		<result column="student_tel" property="studentTel"/>
+		<result column="student_email" property="studentEmail"/>
+		<result column="student_addr" property="studentAddr"/>
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	
+	<select id="student.selectStudentByNo" parameterType="int" resultMap="studentMap">
+		SELECT * FROM STUDENT WHERE STUDENT_NO=#{no}
+	</select>
 
 
 </mapper>
