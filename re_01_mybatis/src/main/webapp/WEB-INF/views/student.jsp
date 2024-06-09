@@ -17,7 +17,7 @@
 	</div>
 <table>
 	<tbody>
-		<c:if test="${student!=null }"> <%-- Q) test는 그냥 임의의 변수인지? --%>
+		<c:if test="${student!=null }"> <%-- Q) test는 그냥 임의의 변수인지? -> 아님! test는 조건을 나타내주는 속성! if문 같은거임 --%>
 			<tr>
 				<%-- Q) #{} ${} 이거 중에 replace 같은 속성을 가지고 있는게 뭐라고 했더라? -> ${}이게 replace랑 같은데 헷갈림.. 찾아보기 --%>			
 				<%-- Q) student. 이거는 왜 해주는거지? 객체 접근마냥 해주는건가? --%>
@@ -35,7 +35,7 @@
 		</tr>
 		</c:if>
 		
-		<c:if test="${not empty students }"> <%-- Q) notnull이랑 not empty랑 다른 점이 뭐야? 그냥 쌤이 다양하게 보여주실라고 이렇게 한건가? --%>
+ 		<c:if test="${not empty students }"> <%--Q) notnull이랑 not empty랑 다른 점이 뭐야? 그냥 쌤이 다양하게 보여주실라고 이렇게 한건가? --%>
 			<c:forEach var="student" items="${students }"> <%-- Q) items값은 어디서 가져오는거지? --%>
 			<tr>
 				<td><c:out value="${student.studentNo }" /></td>
@@ -45,7 +45,7 @@
 				<td><c:out value="${student.studentAddr }" /></td>
 				<td>
 					<fmt:formateDate value="${student.reg_date }" 
-						dateStyle="full" /> <%-- Q) fmt가 뭔지..? 이게 어떻게 적용되는건지 --%>
+						dateStyle="full" /> <%-- Q) fmt가 뭔지..? 이게 어떻게 적용되는건지 --%>	
 				</td>	
 			</tr>
 			</c:forEach>
